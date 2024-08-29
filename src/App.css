@@ -7,6 +7,7 @@
     max-width: 500px;
     margin: 50px auto;
     text-align: center;
+    transition: background-color 0.3s ease;
 }
 
 h1 {
@@ -45,4 +46,57 @@ button {
 
 button:hover {
     background-color: #218838;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.light {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.dark {
+    background-color: #333;
+    color: #f0f0f0;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.save-button, .theme-button, .emoji-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.save-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.theme-button, .emoji-button {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.dark .theme-button, .dark .emoji-button {
+    background-color: #555;
+    color: #f0f0f0;
+}
+
+.shuffle-button {
+    background-color: #9c27b0;
+    color: white;
+}
+
+.dark .shuffle-button {
+    background-color: #7b1fa2;
 }
