@@ -1,23 +1,34 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { saveAs } from 'file-saver';
 import './App.css';
 
 function App() {
+  const [noteContent, setNoteContent] = useState('');
+  const [filename, setFilename] = useState('');
+
+  const handleSave = () => {
+    const blob = new Blob([noteContent], { type: 'text/plain;charset=utf-8' });
+    const file = filename.trim() ? `${filename}.txt` : 'untitled_note.txt';
+    saveAs(blob, file);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1>Note Maker</h1>
+      <textarea
+        id="noteArea"
+        value={noteContent}
+        onChange={(e) => setNoteContent(e.target.value)}
+        placeholder="Type your notes here..."
+      />
+      <input
+        type="text"
+        id="filename"
+        value={filename}
+        onChange={(e) => setFilename(e.target.value)}
+        placeholder="Enter filename"
+      />
+      <button onClick={handleSave}>Save Note</button>
     </div>
   );
 }
